@@ -26,6 +26,7 @@
 *.sql
 *.sqlite
 *config.py
+*.pyc
 
 # OS generated files #
 ######################
