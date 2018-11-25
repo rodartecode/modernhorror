@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
 import asyncio
-
-TOKEN = ''
+import disc_config as cfg
+TOKEN = cfg.disc_token
 
 client = discord.Client()
 bot = commands.Bot(command_prefix = "!")
@@ -21,13 +21,16 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    MSG = message.content.upper()
+
     if message.author == client.user:
         return
-    if message.content == "Hello":
+    if MSG == "Hello":
         await client.send_message(message.channel, "World")
-    if message.content == "Start" or message.content == "start":
+    if MSG == "Start" or message.content == "start":
         await start_loop(message)
-    if message.content == "Die":
+    if MSG == "Die":
+        print("Casper is Dead")
         exit()
     if message.content == "Reset":
         options.option = 0
@@ -100,5 +103,3 @@ async def on_reaction_add(reaction, user):
          await start_loop(reaction.message)
 
 
-
-client.run(TOKEN)
