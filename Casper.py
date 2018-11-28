@@ -1,11 +1,17 @@
+import os
 import discord
 from discord.ext import commands
 import asyncio
+import xml.etree.ElementTree as et
 import disc_config as cfg
 TOKEN = cfg.disc_token
 
 client = discord.Client()
 bot = commands.Bot(command_prefix = "!")
+
+basePath = os.path.dirname(os.path.realpath(__file__))
+casperFile =  os.path.join(basePath, "Data\\Casper.xml")
+print(casperFile)
 
 class Stats:
     option = 0
@@ -27,15 +33,15 @@ async def on_message(message):
 
     if message.author == client.user:
         return
-    if MSG == "Hello":
+    if MSG == "HELLO":
         await client.send_message(message.channel, "World")
-    if message.content == "Start" or message.content == "start":
+    if message.content == "START" or message.content == "start":
         options.option = 0
         await start_loop(message)
-    if MSG == "Die":
+    if MSG == "DIE":
         print("Casper is Dead")
-        exit()
-    if message.content == "Reset":
+        await client.close()
+    if message.content == "RESET":
         options.option = 0
 
 
@@ -48,7 +54,7 @@ async def start_loop(message):
         emb = (discord.Embed(description="👨: You choose a man \n👩: You choose a woman \n🐕: You choose a dog \n👻: You choose a ghost", colour = 0x3DF270))
         funmsg = await client.send_message(message.channel, embed=emb)
         
-        """this loop adds the reactions"""
+        ##this loop adds the reactions
         for emoji in emojispam:
             await client.add_reaction(funmsg, emoji)
 
@@ -102,3 +108,4 @@ async def on_reaction_add(reaction, user):
          await start_loop(reaction.message)
 
 
+client.run(TOKEN)
