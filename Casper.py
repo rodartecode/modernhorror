@@ -11,9 +11,11 @@ bot = commands.Bot(command_prefix = "!")
 
 basePath = os.path.dirname(os.path.realpath(__file__))
 casperFile =  os.path.join(basePath, "Data\\Casper.xml")
+## Check that the file path is correct
 print(casperFile)
 
 class Stats:
+    is_running = False
     option = 0
     temperment = 0
     messageArray = ["Ok, no turning back now! \nSo, are you a man or a woman?",
@@ -36,13 +38,17 @@ async def on_message(message):
     if MSG == "HELLO":
         await client.send_message(message.channel, "World")
     if message.content == "START" or message.content == "start":
-        options.option = 0
-        await start_loop(message)
+        if options.is_running == False:
+            options.option = 0
+            options.is_running = True
+            await start_loop(message)
+            
     if MSG == "DIE":
         print("Casper is Dead")
         await client.close()
     if message.content == "RESET":
         options.option = 0
+        options.is_running = False
 
 
 @client.event
