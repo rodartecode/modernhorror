@@ -1,7 +1,24 @@
+<?xml version = "1.0"?>
 <Casper>
-    <Dialogue>
-        <Scene id = 1>
-            </line>
-        </Scene>
-    </Dialogue>
+	<Scene id = "0" name = "Intro">
+		<Option id = "0">
+			<line id = "0">Ok, no turning back now! \nSo, are you a man or a woman?</line>
+			<line id = "1">👨: You choose a man \n👩: You choose a woman \n🐕: You choose a dog \n👻: You choose a ghost</line>
+		</Option>
+
+		<Option id = "1">
+			<line>stufff</line>
+		</Option>
+
+		<Option id = "2"></Option>
+
+		<Option id = "3"></Option>
+		
+		<Option id = "4"></Option>
+	</Scene>
+	<Scene id = "1" name = "Attic">
+		<Option id = "1">
+			<line></line>
+		</Option>
+	</Scene>
 </Casper>

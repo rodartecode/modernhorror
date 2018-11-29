@@ -14,6 +14,9 @@ casperFile =  os.path.join(basePath, "Data\\Casper.xml")
 ## Check that the file path is correct
 print(casperFile)
 
+tree = et.parse(casperFile)
+root = tree.getroot()
+
 class Stats:
     is_running = False
     option = 0
@@ -56,7 +59,7 @@ async def start_loop(message):
     emojispam = ['👨', '👩', '🐕', '👻']
 
     if options.option == 0:
-        await client.send_message(message.channel, "Ok, no turning back now! \nSo, are you a man or a woman?")
+        await client.send_message(message.channel, root.find())
         emb = (discord.Embed(description="👨: You choose a man \n👩: You choose a woman \n🐕: You choose a dog \n👻: You choose a ghost", colour = 0x3DF270))
         funmsg = await client.send_message(message.channel, embed=emb)
         
