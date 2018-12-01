@@ -66,33 +66,45 @@ async def start_loop(message):
     print("starting loop")
 
     if options.option == 0:
+
+        ## intro_dialog will hold the element tree objects
         intro_dialog = []
         print("finding lines")
+
+        ## finds all elements in scene in option in line
         intro_dialog = root.findall("./Scene[@id='0']/Option[@id='0']/line")
+
+
+        ## intro_text will hold the actual strings
         intro_text = []
+        ## make sure tree was parsed properly
         print("size of lines: ", len(intro_dialog))
 
+        ## add the strings to intro_dialog
         for elem in intro_dialog:
             print(elem.text)
             intro_text.append(elem.text)
-
-        if len(intro_dialog) == 0:
-            print("uh-oh")
-        else:
-            print("huh? what?")
-            print(len(intro_dialog))
-
+        
+        ## test what's actually in intro_text
         for line in intro_text:
             print(">", line)
         
         print("done finding lines")
 
+        ## fix the newline characters
+        intro_text[0] = intro_text[0].replace(r'\n', '\n')
+        intro_text[1] = intro_text[1].replace(r'\n', '\n')
 
+        ## replaced newlines
+        for line in intro_text:
+            print(">", line)
+
+        ## now we can access the strings in intro_text list
         await client.send_message(message.channel, intro_text[0])
         emb = (discord.Embed(description=intro_text[1], colour = 0x3DF270))
         funmsg = await client.send_message(message.channel, embed=emb)
         
-        ##this loop adds the reactions
+        ## this loop adds the reactions
         for emoji in emojispam:
             await client.add_reaction(funmsg, emoji)
 
