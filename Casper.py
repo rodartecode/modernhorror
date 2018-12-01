@@ -16,6 +16,12 @@ print(casperFile)
 
 tree = et.parse(casperFile)
 root = tree.getroot()
+for elem in root:
+    print(elem.tag, elem.text)
+    for e in elem:
+        print (e.tag, e.text)
+        for child in e:
+            print(child.tag, child.text)
 
 class Stats:
     is_running = False
@@ -57,10 +63,33 @@ async def on_message(message):
 @client.event
 async def start_loop(message):
     emojispam = ['👨', '👩', '🐕', '👻']
+    print("starting loop")
 
     if options.option == 0:
-        await client.send_message(message.channel, root.find())
-        emb = (discord.Embed(description="👨: You choose a man \n👩: You choose a woman \n🐕: You choose a dog \n👻: You choose a ghost", colour = 0x3DF270))
+        intro_dialog = []
+        print("finding lines")
+        intro_dialog = root.findall("./Scene[@id='0']/Option[@id='0']/line")
+        intro_text = []
+        print("size of lines: ", len(intro_dialog))
+
+        for elem in intro_dialog:
+            print(elem.text)
+            intro_text.append(elem.text)
+
+        if len(intro_dialog) == 0:
+            print("uh-oh")
+        else:
+            print("huh? what?")
+            print(len(intro_dialog))
+
+        for line in intro_text:
+            print(">", line)
+        
+        print("done finding lines")
+
+
+        await client.send_message(message.channel, intro_text[0])
+        emb = (discord.Embed(description=intro_text[1], colour = 0x3DF270))
         funmsg = await client.send_message(message.channel, embed=emb)
         
         ##this loop adds the reactions
