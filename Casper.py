@@ -116,7 +116,6 @@ async def start_loop(message):
         await client.add_reaction(unfunmsg, '👎')
     
     else:
-        await client.send_message(message.channel, options.messageArray[options.option])
         options.option = 0
 
     
