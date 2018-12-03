@@ -12,8 +12,10 @@ TOKEN = cfg.disc_token
 client = discord.Client()
 bot = commands.Bot(command_prefix = "!")
 
+## get the current directory path and manually append local xml file location
 basePath = os.path.dirname(os.path.realpath(__file__))
 casperFile =  os.path.join(basePath, "Data\\Casper.xml")
+
 ## Check that the file path is correct
 print(casperFile)
 
@@ -98,7 +100,8 @@ async def start_loop(message):
         intro_text[0] = intro_text[0].replace(r'\n', '\n')
         intro_text[1] = intro_text[1].replace(r'\n', '\n')
 
-        ## replaced newlines
+        ## with the replaced newlines
+        ## this bit is just for testing, we can delete later
         for line in intro_text:
             print(">", line)
 

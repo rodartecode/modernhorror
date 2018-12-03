@@ -18,11 +18,11 @@ class GameManager:
     ## 
     ##
 
-    async def delayedMessage(message):
+    async def delayedMessage(self, message):
         if(not message):
             print("There's no message")
             return
 
         msg = message
-        await asyncio.sleep(DEFAULT_WAIT)
+        await asyncio.sleep(GameManager.DEFAULT_WAIT)
 
