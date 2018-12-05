@@ -5,18 +5,21 @@ from discord.ext import commands
 class GameManager:
 
     ## this is constant variable, please no change
-    ## constant for how long to wait before sending
-    ## message in delayedMessage method ~jr    
+    ## "constant" var: how long to wait before sending
+    ## msg in delayedMessage method ~jr    
     DEFAULT_WAIT = 2
 
     ## constructor?? I guess its probably not called 
-    ## that in python ~jr
-    def __init__(self):
-        pass
+    ## that in python. initializer? 
+    ## This loads a reference to the bot and stores 
+    ## it.
+    ##      ~jr
+    def __init__(self, client):
+        self.client = client
 
 
-    ## 
-    ##
+    ## Sends a discord message after DEAFULT_WAIT
+    ## number of seconds ~jr
 
     async def delayedMessage(self, message):
         if(not message):
@@ -24,5 +27,6 @@ class GameManager:
             return
 
         msg = message
+        print(msg)
         await asyncio.sleep(GameManager.DEFAULT_WAIT)
 
