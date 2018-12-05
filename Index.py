@@ -13,6 +13,7 @@ for file in os.listdir("Cogs"):
         try:
             name = file[:-3]
             bot.load_extension(f"Cogs.{name}")
+            print(f"{name} loaded.")
         except Exception as e:
             print(f'{file} cannot be loaded: {e}')
         

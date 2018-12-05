@@ -3,8 +3,6 @@ import asyncio
 import xml.etree.ElementTree as et
 import discord
 from discord.ext import commands
-import sys
-sys.path.insert(0, '/Util')
 import disc_config as cfg
 TOKEN = cfg.disc_token
 
@@ -64,7 +62,6 @@ async def on_message(message):
         options.is_running = False
 
 
-@client.event
 async def start_loop(message):
     emojispam = ['👨', '👩', '🐕', '👻']
     print("starting loop")
