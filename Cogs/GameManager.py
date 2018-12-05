@@ -18,7 +18,7 @@ class GameManager:
         self.client = client
 
 
-    ## Sends a discord message after DEAFULT_WAIT
+    ## Sends a discord message after DEFAULT_WAIT
     ## number of seconds ~jr
 
     async def delayedMessage(self, message):
@@ -29,6 +29,7 @@ class GameManager:
         msg = message.content
         print(f"message loaded as: {msg}")
         await asyncio.sleep(GameManager.DEFAULT_WAIT)
+        print(f"slept for {GameManager.DEFAULT_WAIT} seconds")
         await self.client.send_message(message.channel, msg)
 
 def setup(client):
