@@ -26,7 +26,10 @@ class GameManager:
             print("There's no message")
             return
 
-        msg = message
-        print(msg)
+        msg = message.content
+        print(f"message loaded as: {msg}")
         await asyncio.sleep(GameManager.DEFAULT_WAIT)
+        await self.client.send_message(message.channel, msg)
 
+def setup(client):
+    client.add_cog(GameManager(client))

@@ -6,7 +6,6 @@ from discord.ext import commands
 import sys
 sys.path.insert(0, '/Util')
 import disc_config as cfg
-import Util.GameManager
 TOKEN = cfg.disc_token
 
 client = discord.Client()
