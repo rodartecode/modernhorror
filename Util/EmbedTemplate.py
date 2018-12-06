@@ -29,6 +29,8 @@ async def showPic ():
     )
 
     showPicEmbed.set_author(name = 'Bri')
+    showPicEmbed.set_image(url = 'https://cdn.discordapp.com/attachments/518583486672535565/520023726742437888/attic.jpg')
+
     await client.say(embed = showPicEmbed)
 
 #Exposition Embed - embed template for scene-setting bits of text
