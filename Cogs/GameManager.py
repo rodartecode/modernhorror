@@ -17,7 +17,6 @@ class GameManager:
     def __init__(self, client):
         self.client = client
 
-
     ## Sends a discord message after DEFAULT_WAIT
     ## number of seconds ~jr
 

@@ -103,7 +103,11 @@ async def start_loop(message):
 
         ## now we can access the strings in intro_text list
         await client.send_message(message.channel, intro_text[0])
-        emb = (discord.Embed(description=intro_text[1], colour = 0x3DF270))
+        emb = (
+            discord.Embed(
+                description=intro_text[1], 
+                colour = 0x3DF270
+                ))
         funmsg = await client.send_message(message.channel, embed=emb)
         
         ## this loop adds the reactions
