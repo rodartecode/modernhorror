@@ -7,3 +7,5 @@ class DialogManager:
         self.CurrentTurn = newTurn
 
     
+
+    

@@ -11,7 +11,6 @@ class DataLoader:
 
 
     def __init__(self):
-        self.dialog
-        pass
+        self.dialog = ""
 
         

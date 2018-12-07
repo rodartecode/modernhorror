@@ -5,4 +5,7 @@ class Dialog:
         self.scene = newScene
         self.line_id = newLineId
 
+    def dialogEnded(self):
+        pass
+
     
