@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<Bot>
+    <scene id = "1" name = "SmithFamily">
+
+        <option id = "0">
+            <line>You hear someone coming up the stairs. It’s a family along with the realtor. They look very innocent and wholesome. Almost too much. You hear that they’re called the Smiths? That figures. They should be easy to scare off… Why do you want to scare them off? It just seems right. Maybe that’s just what ghosts do, like an instinct.</line>
+        </option>
+
+        <option id = "1">
+            <line>The realtor shows them to the master bedroom. They have looked delighted this whole time. Why don’t you show them?</line>
+        </option>
+
+        <option id = "2">
+            <line>What would you like to do?</line>
+            <!-- 3 options -->
+        </option>
+
+        <option id = "3">
+            <line>You try to flicker the lights. It may have worked this time, but it wasn’t really noticeable in the daylight.</line>
+            <line>You try to knock over a lamp. You just barely manage to move it, but it doesn’t fall. The Smiths missed it too.</line>
+            <line>You walk around looking for a creaking floorboard. You don’t seem to find one.</line>
+        </option>
+
+        <option id = "4">
+            <line>The realtor shows the Smiths to the nursery. You have to focus and try harder. You’ve got this.</line>
+        </option>
+
+        <option id = "5">
+            <line>What would you like to do?</line>
+            <!-- 3 options -->
+        </option>
+
+        <option id = "6">
+            <line>You reach up and try to rattle the light fixture. It swings side to side slightly. It worked! Mrs. Smith looks upwards. She doesn’t admit it, but she’s spooked.</line>
+            <line>You push on the rocking horse and it actually moves. It worked! Mr. Smith turns and looks suspiciously at the creaking, rocking horse swaying slightly back and forth.</line>
+            <line>You knock over the doll on the shelf. Why is it so creepy? It falls over. The youngest child turns and looks at the doll anxiously.</line>
+        </option>
+
+        <option id = "7">
+            <line>There’s an awkward silence in the room for a moment, but the realtor walks over to the open window. “It is a bit drafty in here. Why don’t we close this?”</line>
+        </option>
+
+        <option id = "8">
+            <line>She hardly touches the window and it falls shut suddenly, with a loud crash. After another, longer silence, she leads them out of the room as she talks about the other bedrooms that she’s going to show them.</line>
+        </option>
+
+        <option id = "9">
+            <line>Don’t stop now! You follow them out into the hallway.</line>
+        </option>
+
+        <option id = "10">
+            <line>What else would you like to do?</line>
+            <!-- 3 options -->
+        </option>
+
+        <option id = "11">
+            <line>The Smiths have barely made it to the next room when you start to close the nursery door behind you. It doesn’t close all the way, but it makes a creaking sound that doesn’t go unnoticed. “That’s strange, I’m sure I closed that window…” the realtor says. Then they continue to the next bedroom.</line>
+            <line>You tap some of the buttons on the security alarm touchpad. It makes some beeping sounds, but the alarm doesn’t go off. The family turns to look for the source of the beeping. The realtor reminds them of security system and emphasizes what a great feature that is, but they don’t find it reassuring.</line>
+            <line>Just as the realtor walks over a small rug on the hallway floor, you try to pull it out from under her. She trips, but it’s nothing serious. She brushes herself off, embarrassed, and although she doesn’t know it was you who did that, she almost appears personally upset with you. Then she turns and continues the tour.</line>
+        </option>
+
+        <option id = "12">
+            <line>After the Smiths finish looking at the upstairs rooms, they head back downstairs. They don’t seem particularly spooked, but you definitely made them uncomfortable and they don’t seem as delighted with the house anymore. It looks like that’s the end of that.</line>
+        </option>
+
+    </scene>
+</Bot>
