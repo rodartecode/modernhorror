@@ -1,0 +1,49 @@
+<?xml version ="1.0"?>
+<Player>
+    <scene id = "0" name = "Intro">
+        <option id = "3">
+            <line>Hi.</line>
+            <line>Excuse me.</line>
+            <line>What are you doing in my house?</line>
+        </option>
+
+        <option id = "5">
+            <line>Hey!</line>
+
+            <line>Listen up!</line>
+
+            <!-- -temperament -->
+            <line>What’s your problem?</line>
+        </option>
+
+        <option id = "10">
+            <line>...</line>
+            <line>I don’t know.</line>
+            <line>It’s none of your business!</line>
+        </option>
+
+        <option id = "13">
+            <!-- +temperament -->
+            <line>Swing the light fixture</line>
+
+            <!-- -temperament -->
+            <line>Break a window</line>
+
+            <line>Open the door</line>
+        </option>
+
+        <option id = "15">
+            <line>Slide the chair across the floor</line>
+
+            <line>Open the window</line>
+
+            <line>Open the door</line>
+        </option>
+
+        <option id = "17">
+            <line>Flip the light switch</line>
+            <line>Flicker the lights on your own</line>
+            <line>Stare out the window futilely</line>
+        </option>
+    </scene>
+</Player>

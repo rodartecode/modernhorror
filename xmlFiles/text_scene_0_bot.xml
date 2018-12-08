@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<Bot>
+    <scene id = "0" name = "Intro">
+        <option id = "0">
+            <line>You’re standing in front of a window admiring the view when someone walks into the room behind you and interrupts your train of thought. You were deep in thought, but now you can’t remember what it was you were thinking about. In fact, now that you think about it, you can’t remember what you’re doing here. Or where you are. Or who you are. This can’t be good...</line>
+        </option>
+
+        <option id = "1">
+            <line>A man speaks again — the same one who interrupted you — but you are still too distracted to hear what he said. A techie-looking guy is walking around the attic — that’s where you are! —  and looking around. He must have been speaking to someone down on the floor below. You realize that he is viewing the house with a realtor.</line>
+        </option>
+
+        <option id = "2">
+            <line>You should try talking to him.</line>
+
+        <option id = "3">
+            <line>What would you like to say?</line>
+            <!-- 3 options -->
+        </option>
+
+        <option id = "4">
+            <line>He ignores you and continues looking around. That’s rude! You should try again.</line>
+        </option>
+
+        <option id = "5">
+            <line>What would you like to say?</line>
+            <!-- 3 choices -->
+        </option>
+
+        <option id = "6">
+            <line>How strange... he doesn’t even acknowledge your presence.</line>
+        </option>
+
+        <option id = "7">
+            <line>He goes back downstairs, closing the door behind him. You walk over and try to open the door, but you can’t even turn the handle... what’s going on here?</line>
+        </option>
+
+        <option id = "8">
+            <line>You pace around in an anxious confusion until you are interrupted by your reflection in a tall mirror again the wall. It’s pale and uncanny. You suddenly realize what must be going on — you’re dead.</line>
+        </option>
+
+        <option id = "9">
+            <line></line>You’re startled by the sound of another voice. You turn around to see an elderly woman who tells you that you shouldn’t be so easily startled for a ghost. After all, it’s you who should be learning to scare others. Or you could be friendly if you like — but you appear to have some type of unfinished business to deal with.</line>
+        </option>
+
+        <option id = "10">
+            <line>“What is that, I wonder?” she asks.</line>
+            <!-- 3 choices -->
+        </option>
+
+        <option id = "11">
+            <line>“Oh... well, take all the time you need to remember. There isn’t any rush now.”</line>
+            <line>“That’s quite alright. You’ll remember with time, I’m sure.”</line>
+            <line>“No, it’s not. I shouldn’t have asked.”</line>
+        </option>
+
+        <option id = "12">
+            <line>“Anyhow, why don’t you just focus for now on learning to interact with your environment. You’ll get better the more you practice.”</line>
+        </option>
+
+        <option id = "13">
+            <line>What would you like to do?</line>
+            <!-- 3 options -->
+        </option>
+
+        <option id = "14">
+            <!-- + temperament -->
+            <line>Your hand touches the fixture and goes right through it.</line>
+
+            <!-- - temperament -->
+            <line>You swing a fist through the window — literally through it. You really are a ghost, aren’t you?</line>
+
+            <line>Your hand goes through the door this time. You try to walk through, but you can’t. Ghost physics is confusing...</line>
+        </option>
+
+        <option id = "15">
+            <line>What would you like to do now?</line>
+            <!-- 3 options -->
+        </option>
+
+        <option id = "16">
+            <line>That would make a mysterious sound down below to the unsuspecting guest. You aren’t able it move it an inch however.</line>
+            <line>Are you trying to get out that way? It doesn’t even move when you try to lift it.</line>
+            <line>You still can’t open it. Why don’t you try something else?</line>
+        </option>
+
+        <option id = "17">
+            <line>What if you tried something easier?</line>
+            <!-- 3 options -->
+        </option>
+
+        <option id = "18">
+            <line>It feels like it *almost* moved.</line>
+            <line>You try to will the lights to flicker. As a ghost, you can do that, right? It almost seems like it worked slightly, but you can’t quite tell.</line>
+            <line>Oh come on, it’s not that bad. You are dead, but this isn’t the worst this could have gone...</line>
+        </option>
+
+        <option id = "19">
+            <line>“Well that’s was a good start. It does take time to get used to, so you shouldn’t worry about it. Why don’t you go on downstairs and see what else you can do?”</line>
+        </option>
+
+        <option id = "20">
+            <line>She opens the door for you and then turns to you.</line>
+        </option>
+
+        <option id = "21">
+            <line>She says she’s going to stay in the attic so she can finish her novel. Although she is forcing a smile as she says it, you get the impression that she’s read it a couple hundred times already. At least. You figure that you’d best go wander around and find something more interesting to do with your own afterlife.</line>
+        </option>
+    </scene>
+</Bot>
