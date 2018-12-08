@@ -23,13 +23,35 @@ class DataLoader:
         playerTree = et.parse(DataLoader._playerDialogPath)
         playerRoot = playerTree.getroot()
 
-        playerDialog = playerRoot.findall(f"./Scene[@id='0']/Line[@id='0']/line")
+        playerDialog = playerRoot.findall(f"./scene/line/option")
+        playerText = []
 
+        for elem in playerDialog:
+            playerText.append(elem.text)
+
+        for elem in playerText:
+            print(elem)
+
+        return playerText
 
 
     def setupBot(self):
-        pass
+        botTree = et.parse(DataLoader._botDialogPath)
+        botRoot = botTree.getroot()
 
+        botDialog = botRoot.findall(f"./scene/line/option")
+        botText = []
 
+        for elem in botDialog:
+            botText.append(elem.text)
+
+        for elem in botText:
+            print(elem)
+
+        return botText
+
+Loader = DataLoader()
+Loader.setupPlayer()
+Loader.setupBot()
 
         

@@ -1,6 +1,11 @@
+import sys
+import os
+sys.path.append(os.path.abspath('../Util'))
+import DataLoader
 import asyncio
 import discord
 from discord.ext import commands
+
 
 class GameManager:
 
@@ -9,6 +14,8 @@ class GameManager:
     ## msg in delayedMessage method ~jr    
     DEFAULT_WAIT = 2
 
+    Loader = DataLoader()
+
     ## constructor?? I guess its probably not called 
     ## that in python. initializer? 
     ## This loads a reference to the bot and stores 
@@ -16,6 +23,8 @@ class GameManager:
     ##      ~jr
     def __init__(self, client):
         self.client = client
+        self.player_text = GameManager.Loader.setupPlayer()
+        self.player_text = GameManager.Loader.setupBot()
 
     ## Sends a discord message after DEFAULT_WAIT
     ## number of seconds ~jr
@@ -33,3 +42,6 @@ class GameManager:
 
 def setup(client):
     client.add_cog(GameManager(client))
+
+
+Manager = GameManager()
