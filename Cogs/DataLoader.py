@@ -4,6 +4,12 @@ import xml.etree.ElementTree as et
 
 class DataLoader:
     
+    # Some witchcraft to hardcode in the xml file paths
+    # This file is gonna be full of repeating code
+    # So this should be refactored into a few methods
+    # and loops to automatically load all the files
+
+    # For now, its hardcoded ~jr
 
     _basePath = os.path.dirname(os.path.realpath(__file__))
     _basePath = _basePath[:-4]
@@ -19,22 +25,32 @@ class DataLoader:
         self.playerDialog = []
         self.botDialog = []
 
+    # returns an array of strings that represent every line
+    # in the player xml file
     def setupPlayer(self):
+        
+        # initialize an Element Tree
         playerTree = et.parse(DataLoader._playerDialogPath)
+        # get the root of the Element Tree
         playerRoot = playerTree.getroot()
 
+        # Load all the "option" objects from the xml file
         playerDialog = playerRoot.findall(f"./scene/line/option")
+        # Array to hold the strings
         playerText = []
 
+        # Get all the strings and add them to playerText
         for elem in playerDialog:
             playerText.append(elem.text)
 
+        # This is just to test that we got some lines in the array
         for elem in playerText:
             print(elem)
 
+        # Return the array
         return playerText
 
-
+    # same as setupPlayer but it loads the bot file
     def setupBot(self):
         botTree = et.parse(DataLoader._botDialogPath)
         botRoot = botTree.getroot()

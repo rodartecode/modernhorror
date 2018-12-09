@@ -1,6 +1,8 @@
 import discord
 import discord.ext.commands as cmd
 
+# We'll inherit the extended commands.Bot
+# And base our main bot from this class
 class Bot(cmd.Bot):
     def __init__(self, *args, prefix=None, **kwargs):
         super().__init__(*args, **kwargs)

@@ -27,13 +27,14 @@ class GameManager:
         self.player_text = GameManager.Loader.setupPlayer()
         self.player_text = GameManager.Loader.setupBot()
 
-    ## Sends a discord message after DEFAULT_WAIT
-    ## number of seconds ~jr
 
     async def on_ready(self):
         print("GM ready")
 
 
+    # Sends a message after a specified amount of time
+    # Right now it uses a global default variable, but
+    # can be changed to accept another argument for seconds
     async def delayedMessage(self, message):
         if(not message):
             print("There's no message")
@@ -44,6 +45,8 @@ class GameManager:
         await asyncio.sleep(GameManager.DEFAULT_WAIT)
         print(f"slept for {GameManager.DEFAULT_WAIT} seconds")
         await self.client.send_message(message.channel, msg)
+
+
 
 def setup(client):
     client.add_cog(GameManager(client))
