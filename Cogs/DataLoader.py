@@ -50,8 +50,4 @@ class DataLoader:
 
         return botText
 
-Loader = DataLoader()
-Loader.setupPlayer()
-Loader.setupBot()
-
         
