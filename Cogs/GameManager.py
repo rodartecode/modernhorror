@@ -14,6 +14,7 @@ class GameManager:
     ## msg in delayedMessage method ~jr    
     DEFAULT_WAIT = 2
 
+    ## Instantiate DataLoader
     Loader = DataLoader.DataLoader()
 
     ## constructor?? I guess its probably not called 
@@ -24,8 +25,16 @@ class GameManager:
     def __init__(self, client):
         self.client = client
         self.config = Default.get("game_config.json")
+        
+        # Get the dialog lists
         self.player_text = GameManager.Loader.setupPlayer()
         self.player_text = GameManager.Loader.setupBot()
+
+        # A list of the current players in the server
+        self.players = []
+        
+
+
 
 
     async def on_ready(self):
