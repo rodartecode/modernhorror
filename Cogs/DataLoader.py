@@ -13,11 +13,11 @@ class DataLoader:
 
     _basePath = os.path.dirname(os.path.realpath(__file__))
     _basePath = _basePath[:-4]
-    print(_basePath)
+    #print(_basePath)
     _botDialogPath = os.path.join(_basePath, "Data\\text_scene_0_bot.xml")
     _playerDialogPath = os.path.join(_basePath, "Data\\text_scene_0_player.xml")
-    print(_botDialogPath)
-    print(_playerDialogPath)
+    #print(_botDialogPath)
+    #print(_playerDialogPath)
 
 
 
@@ -45,7 +45,8 @@ class DataLoader:
 
         # This is just to test that we got some lines in the array
         for elem in playerText:
-            print(elem)
+            pass
+            #print(elem)
 
         # Return the array
         return playerText
@@ -62,7 +63,8 @@ class DataLoader:
             botText.append(elem.text)
 
         for elem in botText:
-            print(elem)
+            pass
+            #print(elem)
 
         return botText
 

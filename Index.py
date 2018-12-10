@@ -1,14 +1,19 @@
 import os
+import discord
 from Util.Data import Bot
 from discord.ext.commands import HelpFormatter
 from Util import Default
 
+print(discord.__version__)
 # Parse the json config file
 config = Default.get("game_config.json")
 print(config)
 
 # Create Bot
 bot = Bot(command_prefix=config.prefix, prefix=config.prefix)
+typestring = type(bot)
+print('type: ')
+print(typestring)
 
 # This for loop loads all the cogs
 for file in os.listdir("Cogs"):

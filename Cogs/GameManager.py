@@ -2,7 +2,7 @@ import sys
 import os
 import asyncio
 from Cogs import DataLoader
-from Util import Default
+from Util import Default, Repo, Player
 import discord
 from discord.ext import commands
 
@@ -30,14 +30,45 @@ class GameManager:
         self.player_text = GameManager.Loader.setupPlayer()
         self.player_text = GameManager.Loader.setupBot()
 
-        # A list of the current players in the server
-        self.players = []
+        # A dictionary of the current players in the server
+        self.players = []]
+
+        # A list of channels to be used in server
+        # channel_list is an array of tuples
+        channel_list = self.config.channels
+        channel_names = []
+        
+        # Get the channel name strings 
+        for elem in channel_list:
+            print(elem[0])
+            channel_names.append(elem[0])
+
         
 
 
 
 
     async def on_ready(self):
+        print(type(self.client))
+
+        # A list of all servers the bot is a part of
+        self.joined_servers = self.client.servers
+
+        for server in self.joined_servers:
+            serv_members = server.members
+            
+            print("list of member ids:")
+            for memb in serv_members:
+                print(memb.id)
+
+                if (Repo.memb_is_owner(memb.id)):
+                    pass
+                elif (self.players[f"{memb.id}"]):
+                    pass
+                else:
+                    pass
+
+                    
         print("GM ready")
 
 
@@ -54,6 +85,10 @@ class GameManager:
         await asyncio.sleep(GameManager.DEFAULT_WAIT)
         print(f"slept for {GameManager.DEFAULT_WAIT} seconds")
         await self.client.send_message(message.channel, msg)
+
+    async def start_loop(self):
+        pass
+        
 
 
 
