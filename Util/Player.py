@@ -26,7 +26,7 @@ class PlayerDecoder(json.JSONEncoder):
         if (isinstance(obj, Player)):
             return 
             {
-                "__player__": True
+                "__player__": True,
                 "user_id": obj.user_id,
                 "progress": obj.progress,
                 "temperment": obj.temperment
