@@ -1,0 +1,33 @@
+{
+    "casp_token": "",
+    "crow_token": "",
+    "owners": [
+      ## userids for owners here
+    ],
+    "cogs": [
+      "GameManager",
+      "MessageManager",
+      "ServerSetup"
+    ],
+    "prefix": [
+      "!"
+    ],
+    "playing": "games!",
+
+    "channels": 
+    [
+      {
+        "channel_name": "aether",
+        "channel_id": ""
+
+      },
+      {
+        "channel_name": "attic",
+        "channel_id": ""
+      },
+      {
+        "channel_name": "master-bedroom",
+        "channel_id": ""
+      }
+    ]
+  }
