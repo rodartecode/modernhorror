@@ -2,7 +2,7 @@ import sys
 import os
 import asyncio
 from Cogs import DataLoader
-from Util import Default, Repo, Player
+from Util import Default, Player
 import discord
 from discord.ext import commands
 
@@ -40,24 +40,30 @@ class GameManager:
     def __init__(self, client):
         self.client = client
         print("Fetching config file")
-        #self.config = Default.get("game_config.json")
+        self.config = Default.get("game_config.json")
         print("config loaded")
         print("Fetching player database")
-        #self.db = Default.get_player_db(self._db_path)
-        #print(self.db)
+        self.db = Default.get_player_db(self._db_path)
+        print(self.db)
+        print("Db loaded")
         
         # Get the dialog lists
         self.player_text = GameManager.Loader.setupPlayer()
         self.player_text = GameManager.Loader.setupBot()
+        print('Dialog loaded')
 
         # A dictionary of the current players in the server
         self.players = {}
+        print('Players dictionary initialized')
 
+        typestring = type(self.db)
         # Check db and load players who have played the game
-        #for i in self.db:
-        #    if i['user_id'] not in self.players:
-        #        new_id = i['user_id']
-        #        self.players[new_id] = i
+        print(typestring)
+        print("loading db")
+        for i in self.db:
+            if i not in self.players:
+                new_id = i
+                self.players[new_id] = self.db[i]
 
         # A list of channels to be used in server
         # channel_list is an array of tuples
@@ -68,6 +74,9 @@ class GameManager:
         for elem in channel_list:
             print(elem[0])
             channel_names.append(elem[0])
+
+        print("GameManager initialized")
+        
 
         
 
@@ -91,7 +100,7 @@ class GameManager:
             for memb in server.members:
                 print(memb.id)
 
-                if (Repo.memb_is_owner(memb.id)):
+                if (memb.id in self.config.owners):
                     print(f"{memb.name} is an owner and will be assigned admin role")
                 elif (memb.id in self.players):
                     print(f"{memb.name} is already in the database")

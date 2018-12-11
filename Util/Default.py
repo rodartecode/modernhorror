@@ -13,7 +13,7 @@ class PlayerDecoder(json.JSONEncoder):
 
         # If it's a Player object it returns a dictionary with
         # relevant data
-        if (isinstance(obj, Player)):
+        if (isinstance(obj, Player.Player)):
             return {
                 "__player__": True,
                 "user_id": obj.user_id,
@@ -47,10 +47,11 @@ def get_player_db(file):
 
 def put_player_db(data, file):
     try:
-        with open(file, encoding='utf8') as data:
-            json.dump(data, file)
+        player_dict = dict(data)
+        with open(file, 'w', encoding='utf8') as player_data:
+            json.dump(player_dict, player_data, cls=PlayerDecoder)
     except AttributeError:
-        raise AttributeError("Unkown argument")
+        raise AttributeError("Unkown argument in put_player_db")
     except FileNotFoundError:
         raise FileNotFoundError(f"2b JSON file {file} not found")
 

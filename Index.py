@@ -34,4 +34,4 @@ for file in os.listdir("Cogs"):
             print(f'{file} cannot be loaded: {e}')
         
 # Run the bot with crow_token
-# bot.run(config.crow_token)
+bot.run(config.crow_token)
