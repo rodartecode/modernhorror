@@ -1,18 +1,17 @@
 import os
-import asyncio
-import xml.etree.ElementTree as et
 import discord
 from discord.ext import commands
-import disc_config as cfg
-TOKEN = cfg.disc_token
+import asyncio
+import xml.etree.ElementTree as et
+import servermanager
+import messagemanager
+TOKEN = ''
 
 client = discord.Client()
 bot = commands.Bot(command_prefix = "!")
 
-## get the current directory path and manually append local xml file location
 basePath = os.path.dirname(os.path.realpath(__file__))
 casperFile =  os.path.join(basePath, "Data\\Casper.xml")
-
 ## Check that the file path is correct
 print(casperFile)
 
@@ -29,10 +28,13 @@ class Stats:
     is_running = False
     option = 0
     temperment = 0
+    player = None
+    messman = None
     messageArray = ["Ok, no turning back now! \nSo, are you a man or a woman?",
                     ".....A MANLY MAN!", "A LADAYYY!!!", "...a dog???", "Hey, it's you, Casper!" ]
 
 options = Stats()
+perms = servermanager.ServerManager(client)
 
 
 @client.event
@@ -41,8 +43,22 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name="Making a bot"))
 
 @client.event
+async def on_member_join(member):
+    options.player = member
+    await perms.serverSetup(member)
+    options.messman = messagemanager.MessageManager(client)
+    startingPoint = await perms.getChannelByName(name="aether", server=member.server)
+    msg = await client.send_message(startingPoint, "Hello there...")
+    await start_loop(msg)
+
+@client.event
 async def on_message(message):
     MSG = message.content.upper()
+
+    if options.messman != None:
+        await options.messman.enqueue(message, message.server)
+    else:
+        print("messman is none")
 
     if message.author == client.user:
         return
@@ -52,6 +68,7 @@ async def on_message(message):
         if options.is_running == False:
             options.option = 0
             options.is_running = True
+            message.author
             await start_loop(message)
             
     if MSG == "DIE":
@@ -62,55 +79,39 @@ async def on_message(message):
         options.is_running = False
 
 
+@client.event
 async def start_loop(message):
     emojispam = ['👨', '👩', '🐕', '👻']
     print("starting loop")
 
     if options.option == 0:
-
-        ## intro_dialog will hold the element tree objects
         intro_dialog = []
         print("finding lines")
-
-        ## finds all elements in scene in option in line
         intro_dialog = root.findall("./Scene[@id='0']/Option[@id='0']/line")
-
-
-        ## intro_text will hold the actual strings
         intro_text = []
-        ## make sure tree was parsed properly
         print("size of lines: ", len(intro_dialog))
 
-        ## add the strings to intro_dialog
         for elem in intro_dialog:
             print(elem.text)
             intro_text.append(elem.text)
-        
-        ## test what's actually in intro_text
+
+        if len(intro_dialog) == 0:
+            print("uh-oh")
+        else:
+            print("huh? what?")
+            print(len(intro_dialog))
+
         for line in intro_text:
             print(">", line)
         
         print("done finding lines")
 
-        ## fix the newline characters
-        intro_text[0] = intro_text[0].replace(r'\n', '\n')
-        intro_text[1] = intro_text[1].replace(r'\n', '\n')
 
-        ## with the replaced newlines
-        ## this bit is just for testing, we can delete later
-        for line in intro_text:
-            print(">", line)
-
-        ## now we can access the strings in intro_text list
         await client.send_message(message.channel, intro_text[0])
-        emb = (
-            discord.Embed(
-                description=intro_text[1], 
-                colour = 0x3DF270
-                ))
+        emb = (discord.Embed(description=intro_text[1], colour = 0x3DF270))
         funmsg = await client.send_message(message.channel, embed=emb)
         
-        ## this loop adds the reactions
+        ##this loop adds the reactions
         for emoji in emojispam:
             await client.add_reaction(funmsg, emoji)
 
@@ -122,6 +123,7 @@ async def start_loop(message):
         await client.add_reaction(unfunmsg, '👎')
     
     else:
+        await client.send_message(message.channel, options.messageArray[options.option])
         options.option = 0
 
     
