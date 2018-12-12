@@ -3,8 +3,7 @@ import discord
 from discord.ext import commands
 import asyncio
 import xml.etree.ElementTree as et
-import servermanager
-import messagemanager
+from Util import servermanager, messagemanager
 TOKEN = ''
 
 client = discord.Client()

@@ -9,26 +9,23 @@ from discord.ext import commands
 
 class GameManager:
 
-    # Some witchcraft to hardcode in the xml file paths
-    # This file is gonna be full of repeating code
-    # So this should be refactored into a few methods
-    # and loops to automatically load all the files
-
+    # Some witchcraft to hardcode in the file paths
     # For now, its hardcoded ~jr
 
     _basePath = os.path.dirname(os.path.realpath(__file__))
     _basePath = _basePath[:-4]
-
-    _game_config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'game_config.json')
     _db_path = os.path.join(_basePath, "db.json")
-    print(_game_config_path)
     print(_db_path)
 
-    ## this is constant variable, please no change
-    ## "constant" var: how long to wait before sending
+    #################################
+    ## this is constant variables, please no change
+    ## 
+    ## how long to wait before sending
     ## msg in delayedMessage method ~jr    
     DEFAULT_WAIT = 2
+    MODE = 1
 
+    ##################################
     ## Instantiate DataLoader
     Loader = DataLoader.DataLoader()
 
@@ -39,12 +36,13 @@ class GameManager:
     ##      ~jr
     def __init__(self, client):
         self.client = client
+
+        ## Game configs
         print("Fetching config file")
         self.config = Default.get("game_config.json")
         print("config loaded")
         print("Fetching player database")
-        self.db = Default.get_player_db(self._db_path)
-        print(self.db)
+        self.db = Default.get_player_db("db.json")
         print("Db loaded")
         
         # Get the dialog lists
@@ -56,9 +54,7 @@ class GameManager:
         self.players = {}
         print('Players dictionary initialized')
 
-        typestring = type(self.db)
         # Check db and load players who have played the game
-        print(typestring)
         print("loading db")
         for i in self.db:
             if i not in self.players:
@@ -67,20 +63,26 @@ class GameManager:
 
         # A list of channels to be used in server
         # channel_list is an array of tuples
-        channel_list = [] #self.config.channels
-        channel_names = []
+        self.channel_list = self.config.channels
+        self.channel_dict = {}
+        self.channel_names = []
+        chty = type(self.channel_dict)
+        cnty = type(self.config)
+        print(chty)
+        print(cnty)
+        print(self.config["channel_dict"])
+        print(self.config["channel_dict"]["aether"])
+        for i in self.channel_dict:
+            print(i)
         
         # Get the channel name strings 
-        for elem in channel_list:
+        for elem in self.channel_list:
             print(elem[0])
-            channel_names.append(elem[0])
+            self.channel_names.append(elem[0])
+
+        
 
         print("GameManager initialized")
-        
-
-        
-
-
 
 
     async def on_ready(self):
@@ -114,11 +116,33 @@ class GameManager:
         print("Updating database")
         Default.put_player_db(self.players, self._db_path)
 
+        for serv in self.joined_servers:
+                for ch in serv.channels:
+                    pass
+                    #if ch.id == self.channel_dict[]:
+                        #print('aether')
+
+
+
+        await self.start_loop()
         print("GM ready")
 
     # END on_ready
     ##################################
 
+    async def start_loop(self):
+        if GameManager.MODE == 1:
+            print('Starting game loop in MODE 1')
+
+
+
+        elif GameManager.MODE == 2:
+            print('Starting game loop in MODE 2')
+        else:
+            print('pass')
+
+    async def on_reaction_add(self, reaction, user):
+        pass
 
 
     # Sends a message after a specified amount of time
@@ -134,9 +158,6 @@ class GameManager:
         await asyncio.sleep(GameManager.DEFAULT_WAIT)
         print(f"slept for {GameManager.DEFAULT_WAIT} seconds")
         await self.client.send_message(message.channel, msg)
-
-    async def start_loop(self):
-        pass
         
 
 

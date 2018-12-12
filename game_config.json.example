@@ -2,7 +2,8 @@
     "casp_token": "",
     "crow_token": "",
     "owners": [
-      ## userids for owners here
+      "" 
+      "userids for owners here"
     ],
     "cogs": [
       "GameManager",

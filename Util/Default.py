@@ -26,7 +26,7 @@ class PlayerDecoder(json.JSONEncoder):
 # Helper class to load our JSON files
 def get(file):
     try:
-        with open(file, encoding='utf8') as data:
+        with open(file, 'r', encoding='utf8') as data:
             return json.load(data, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
     except AttributeError:
         raise AttributeError("Unknown argument")
