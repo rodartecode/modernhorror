@@ -47,7 +47,7 @@ class GameManager:
         
         # Get the dialog lists
         self.player_text = GameManager.Loader.setupPlayer()
-        self.player_text = GameManager.Loader.setupBot()
+        self.bot_text = GameManager.Loader.setupBot()
         print('Dialog loaded')
 
         # A dictionary of the current players in the server
@@ -63,22 +63,14 @@ class GameManager:
 
         # A list of channels to be used in server
         # channel_list is an array of tuples
-        self.channel_list = self.config.channels
-        self.channel_dict = {}
+        self.channel_list = self.config['channels']
+        self.channel_dict = self.config['channel_dict']
         self.channel_names = []
         chty = type(self.channel_dict)
-        cnty = type(self.config)
         print(chty)
-        print(cnty)
-        print(self.config["channel_dict"])
-        print(self.config["channel_dict"]["aether"])
-        for i in self.channel_dict:
-            print(i)
+        print(self.channel_dict['aether'])
         
-        # Get the channel name strings 
-        for elem in self.channel_list:
-            print(elem[0])
-            self.channel_names.append(elem[0])
+        
 
         
 
@@ -102,7 +94,7 @@ class GameManager:
             for memb in server.members:
                 print(memb.id)
 
-                if (memb.id in self.config.owners):
+                if (memb.id in self.config['owners']):
                     print(f"{memb.name} is an owner and will be assigned admin role")
                 elif (memb.id in self.players):
                     print(f"{memb.name} is already in the database")
@@ -118,9 +110,18 @@ class GameManager:
 
         for serv in self.joined_servers:
                 for ch in serv.channels:
-                    pass
-                    #if ch.id == self.channel_dict[]:
-                        #print('aether')
+                    if ch.id == self.channel_dict['aether']:
+                        emb = (discord.Embed(description="text here"))
+                        emb.set_image(url = "https://cdn.discordapp.com/attachments/520071023144599569/521500561279811597/aether2.jpg")
+                        emb.set_author(name = self.bot_text[0])
+                        print('aether')
+                        await self.client.send_message(ch.id, self.bot_text[0])
+                    if ch.id == self.channel_dict['attic']:
+                        emb = (discord.Embed(description="text here"))
+                        emb.set_image(url = "https://cdn.discordapp.com/attachments/518583486672535565/520023726742437888/attic.jpg")
+                        emb.set_author(name = self.bot_text[0])
+                        print('aether')
+                        await self.client.send_message(ch, self.bot_text[0])
 
 
 

@@ -10,7 +10,7 @@ config = Default.get("game_config.json")
 db = Default.get_player_db("db.json")
 
 # Create Bot
-bot = Bot(command_prefix=config.prefix, prefix=config.prefix)
+bot = Bot(command_prefix=config['prefix'], prefix=config['prefix'])
 
 print("Starting extensions loop")
 # This for loop loads all the cogs
@@ -20,8 +20,8 @@ for file in os.listdir("Cogs"):
         name = file[:-3]        
         try:
             # Check that the cog is in our cogs list in game_config.json
-            if name in config.cogs:
-                print("Trying to load extension")
+            if name in config['cogs']:
+                print(f"Trying to load extension {name}")
                 bot.load_extension(f"Cogs.{name}")
                 print(f"{name} loaded.")
             else:
@@ -34,4 +34,4 @@ for file in os.listdir("Cogs"):
             print(f'{file} cannot be loaded: {e}')
         
 # Run the bot with crow_token
-bot.run(config.crow_token)
+bot.run(config['crow_token'])

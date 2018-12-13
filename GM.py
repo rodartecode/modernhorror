@@ -31,38 +31,45 @@ class GM:
     ## This loads a reference to the bot and stores 
     ## it.
     ##      ~jr
-    def __init__(self, client):
+    def __init__(self, client, game_config, database):
         self.client = client
+        self.messman = None
+
+        ## Game configs
         print("Fetching config file")
-        self.config = Default.get("game_config.json")
+        self.config = game_config
         print("config loaded")
         print("Fetching player database")
-        self.db = Default.get_player_db(self._db_path)
-        print(self.db)
+        self.db = database
+        print("Db loaded")
         
         # Get the dialog lists
         self.player_text = GM.Loader.setupPlayer()
-        self.player_text = GM.Loader.setupBot()
+        self.bot_text = GM.Loader.setupBot()
+        print('Dialog loaded')
 
         # A dictionary of the current players in the server
         self.players = {}
+        print('Players dictionary initialized')
 
         # Check db and load players who have played the game
+        print("loading db")
         for i in self.db:
-            if i['user_id'] not in self.players:
-                new_id = i['user_id']
-                self.players[new_id] = i
+            if i not in self.players:
+                new_id = i
+                self.players[new_id] = self.db[i]
 
         # A list of channels to be used in server
         # channel_list is an array of tuples
-        channel_list = [] #self.config.channels
-        channel_names = []
+        self.channel_list = self.config['channels']
+        self.channel_dict = self.config['channel_dict']
+        self.channel_names = []
+        chty = type(self.channel_dict)
+        print(chty)
+        print(self.channel_dict['aether'])
         
-        # Get the channel name strings 
-        for elem in channel_list:
-            print(elem[0])
-            channel_names.append(elem[0])
+        
 
-test = GM(discord.client)
+        
 
-test.client.close()
+        print("GameManager initialized")
