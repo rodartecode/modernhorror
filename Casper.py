@@ -4,13 +4,13 @@ from discord.ext import commands
 import asyncio
 import xml.etree.ElementTree as et
 from Util import servermanager, messagemanager
-TOKEN = ''
+TOKEN = 'NTEyNzc4MTkwNzkyNjg3NjY4.Ds-Z3g.TAPRvopsZSNELylG0eqwnMBI36M'
 
 client = discord.Client()
 bot = commands.Bot(command_prefix = "!")
 
 basePath = os.path.dirname(os.path.realpath(__file__))
-casperFile =  os.path.join(basePath, "Data\\Casper.xml")
+casperFile =  os.path.join(basePath, "Data\\text_scene_0_bot.xml")
 ## Check that the file path is correct
 print(casperFile)
 
@@ -30,7 +30,7 @@ class Stats:
     player = None
     messman = None
     messageArray = ["Ok, no turning back now! \nSo, are you a man or a woman?",
-                    ".....A MANLY MAN!", "A LADAYYY!!!", "...a dog???", "Hey, it's you, Casper!" ]
+                    ".....A MANLY MAN!", "A LADAYYY!!!", "...a dog???", "Hey, it's you, Casper!", "etc", "etc1", "etc2" ]
 
 options = Stats()
 perms = servermanager.ServerManager(client)
@@ -54,6 +54,9 @@ async def on_member_join(member):
 async def on_message(message):
     MSG = message.content.upper()
 
+    if message.content == "feedback":
+        print("feedback starts")
+        await story_text(message.channel)
     if options.messman != None:
         await options.messman.enqueue(message, message.server)
     else:
@@ -69,7 +72,8 @@ async def on_message(message):
             options.is_running = True
             message.author
             await start_loop(message)
-            
+
+        await story_text(message.channel)      
     if MSG == "DIE":
         print("Casper is Dead")
         await client.close()
@@ -125,7 +129,10 @@ async def start_loop(message):
         await client.send_message(message.channel, options.messageArray[options.option])
         options.option = 0
 
-    
+@client.event
+async def story_text(channel):
+
+
     
 @client.event
 async def on_reaction_add(reaction, user):
