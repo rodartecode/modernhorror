@@ -338,6 +338,7 @@ async def prelude():
     await holder.messMan.enqueue(msg, msg.server)
     time.sleep(5)
     await perms.grantPermissions(holder.player, "attic")
+    msg = await bot.send_message(channel, "#attic")
     await game_loop()
 
 @bot.event
@@ -512,6 +513,9 @@ async def game_loop6():
     time.sleep(5)
     holder.scene = 2
     await perms.grantPermissions(holder.player, "masterbedroom")
+    msg = await bot.send_message(channel, "#masterbedroom")
+    await holder.messMan.enqueue(msg, msg.server)
+
 
     channel = await perms.getChannelByName("masterbedroom", holder.currentServer)
     time.sleep(2)
