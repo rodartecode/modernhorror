@@ -318,7 +318,7 @@ async def on_reaction_add(reaction, user):
                 botMessage = uglyBotArray[10]
             msg = await bot.send_message(reaction.message.channel, newMessage)
             await holder.messMan.enqueue(msg, msg.server)  
-            await game_loop7()
+            await game_loop8()
         
 
 
