@@ -514,6 +514,10 @@ async def game_loop6():
     await perms.grantPermissions(holder.player, "masterbedroom")
 
     channel = await perms.getChannelByName("masterbedroom", holder.currentServer)
+    time.sleep(2)
+    emb = (discord.Embed(description="My bedroom, but much nicer than how I left it.", colour = 0x3DF270))
+    emb.set_image(url = "https://cdn.discordapp.com/attachments/520071023144599569/523040030533615616/masterbed.jpg")
+    await bot.send_message(channel, embed=emb)
     msg = await bot.send_message(channel, uglyBotArray[0])
     await holder.messMan.enqueue(msg, msg.server)
     time.sleep(5)
