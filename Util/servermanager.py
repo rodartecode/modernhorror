@@ -54,6 +54,23 @@ class ServerManager:
                     await self.client.edit_channel_permissions(channels, member, overwrite)
 
 
+        for channels in self.client.get_all_channels():
+            if channels.server == member.server:
+                isPartOfGame = False
+                for names in self.roomNames:
+                    if names == channels.name:
+                        isPartOfGame = True
+                if isPartOfGame:
+                    emb = (discord.Embed(description="text here", colour = 0x3DF270))
+                    if channels.name == "aether":
+                        emb.set_image(url = "https://cdn.discordapp.com/attachments/520071023144599569/521500561279811597/aether2.jpg")
+                    elif channels.name == "attic":
+                        emb.set_image(url = "https://cdn.discordapp.com/attachments/518583486672535565/520023726742437888/attic.jpg")
+                    else:                 
+                        emb.set_image(url = "https://i.ytimg.com/vi/EjLqKt9JNlA/maxresdefault.jpg")
+                    msg = await self.client.send_message(channels, embed=emb)
+
+
 
     async def grantAllPermissions(self, member):
         for channels in self.client.get_all_channels():
@@ -158,7 +175,7 @@ class ServerManager:
         elif progress == "masterbedroom":
             channel = await self.getChannelByName(name="hallway", server=member.server)
             overwrite = discord.PermissionOverwrite()
-            overwrite.read_messages = False
+            overwrite.read_messages = True
             overwrite.send_messages = False
             overwrite.add_reactions = False
             await self.client.edit_channel_permissions(channel, member, overwrite) 

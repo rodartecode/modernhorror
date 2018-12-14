@@ -68,7 +68,7 @@ class GM:
         self.channel_names = []
         chty = type(self.channel_dict)
         print(chty)
-
+        print(self.channel_dict['aether'])
         
         
 
