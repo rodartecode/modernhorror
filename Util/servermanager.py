@@ -83,7 +83,7 @@ class ServerManager:
 
             channel = await self.getChannelByName(name="aether", server=member.server)
             overwrite = discord.PermissionOverwrite()
-            overwrite.read_messages = False
+            overwrite.read_messages = True
             overwrite.send_messages = False
             overwrite.add_reactions = False
             await self.client.edit_channel_permissions(channel, member, overwrite)
@@ -185,6 +185,13 @@ class ServerManager:
             await self.client.edit_channel_permissions(channel, member, overwrite) 
             
             channel = await self.getChannelByName(name="attic", server=member.server)
+            overwrite = discord.PermissionOverwrite()
+            overwrite.read_messages = True
+            overwrite.send_messages = False
+            overwrite.add_reactions = False
+            await self.client.edit_channel_permissions(channel, member, overwrite)
+
+            channel = await self.getChannelByName(name="aether", server=member.server)
             overwrite = discord.PermissionOverwrite()
             overwrite.read_messages = False
             overwrite.send_messages = False
