@@ -514,7 +514,6 @@ async def game_loop6():
     time.sleep(5)
     holder.scene = 2
     await perms.grantPermissions(holder.player, "masterbedroom")
-
     channel = await perms.getChannelByName("masterbedroom", holder.currentServer)
     time.sleep(2)
     emb = (discord.Embed(description="My bedroom, but much nicer than how I left it.", colour = 0x3DF270))
