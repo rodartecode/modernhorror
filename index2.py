@@ -137,6 +137,7 @@ async def on_ready():
         for channels in bot.get_all_channels():
             if channels.id == "523047176474198017":
                 channel = channels
+                print (channels)
                 break
         msg = await bot.send_message(channel, embed=emb)
         await bot.add_reaction(msg, '👻')
@@ -185,7 +186,8 @@ async def on_reaction_add(reaction, user):
             else:
                 newMessage = "🤔 " + manager.player_text[2]
             msg = await bot.send_message(reaction.message.channel, newMessage)
-            await holder.messMan.enqueue(msg, msg.server)      
+            await holder.messMan.enqueue(msg, msg.server)
+            time.sleep(5)      
             await game_loop1()
 
         elif (reaction.emoji == '😓' or reaction.emoji == '😤' or reaction.emoji == '😠') and reaction.count > 1:
@@ -199,7 +201,8 @@ async def on_reaction_add(reaction, user):
             else:
                 newMessage = "😠 " + manager.player_text[5]
             msg = await bot.send_message(reaction.message.channel, newMessage)
-            await holder.messMan.enqueue(msg, msg.server)  
+            await holder.messMan.enqueue(msg, msg.server)
+            time.sleep(5)  
             await game_loop2()
 
         elif (reaction.emoji == '🙁' or reaction.emoji == '😧' or reaction.emoji == '😩') and reaction.count > 1:
@@ -218,6 +221,7 @@ async def on_reaction_add(reaction, user):
                 botMessage = manager.bot_text[13]
             msg = await bot.send_message(reaction.message.channel, newMessage)
             await holder.messMan.enqueue(msg, msg.server)
+            time.sleep(5)
             botmsg = await bot.send_message(reaction.message.channel, botMessage)
             await holder.messMan.enqueue(botmsg, msg.server)
             time.sleep(5)
@@ -239,6 +243,7 @@ async def on_reaction_add(reaction, user):
                 botMessage = manager.bot_text[18]
             msg = await bot.send_message(reaction.message.channel, newMessage)
             await holder.messMan.enqueue(msg, msg.server)
+            time.sleep(5)
             botmsg = await bot.send_message(reaction.message.channel, botMessage)
             await holder.messMan.enqueue(botmsg, msg.server)
             time.sleep(5)
@@ -260,6 +265,7 @@ async def on_reaction_add(reaction, user):
                 botMessage = manager.bot_text[22]
             msg = await bot.send_message(reaction.message.channel, newMessage)
             await holder.messMan.enqueue(msg, msg.server)
+            time.sleep(5)
             botmsg = await bot.send_message(reaction.message.channel, botMessage)
             await holder.messMan.enqueue(botmsg, msg.server)
             time.sleep(5)
@@ -280,7 +286,11 @@ async def on_reaction_add(reaction, user):
                 newMessage = "🙄 " + manager.player_text[17]
                 botMessage = manager.bot_text[26]
             msg = await bot.send_message(reaction.message.channel, newMessage)
-            await holder.messMan.enqueue(msg, msg.server)  
+            await holder.messMan.enqueue(msg, msg.server)
+            time.sleep(5)
+            botmsg = await bot.send_message(reaction.message.channel, botMessage)
+            await holder.messMan.enqueue(botmsg, msg.server)
+            time.sleep(5)
             await game_loop6()
 
     if holder.scene == 2:
@@ -300,7 +310,11 @@ async def on_reaction_add(reaction, user):
                 newMessage = "👻 " + uglyPlayerArray[2]
                 botMessage = uglyBotArray[5]
             msg = await bot.send_message(reaction.message.channel, newMessage)
-            await holder.messMan.enqueue(msg, msg.server)  
+            await holder.messMan.enqueue(msg, msg.server)
+            time.sleep(5)
+            botmsg = await bot.send_message(reaction.message.channel, botMessage)
+            await holder.messMan.enqueue(botmsg, msg.server)
+            time.sleep(5)
             await game_loop7()
 
 
@@ -319,9 +333,19 @@ async def on_reaction_add(reaction, user):
                 newMessage = "👧 " + uglyPlayerArray[5]
                 botMessage = uglyBotArray[10]
             msg = await bot.send_message(reaction.message.channel, newMessage)
-            await holder.messMan.enqueue(msg, msg.server)  
-            await game_loop8()
-        
+            await holder.messMan.enqueue(msg, msg.server)
+            botmsg = await bot.send_message(reaction.message.channel, botMessage)
+            await holder.messMan.enqueue(botmsg, msg.server)
+            time.sleep(5)
+            channel = await perms.getChannelByName("masterbedroom", holder.currentServer)
+            emb = (discord.Embed(description="Thanks for playing!", colour = 0x3DF270))
+            emb.set_image(url = "https://cdn.discordapp.com/attachments/520071023144599569/523189892243783681/ghost3.jpg")
+            await bot.send_message(channel, embed=emb)
+            time.sleep(5)
+            await bot.send_message(channel, "Game terminating... granting full permissions to " + holder.player.name + "... thanks for playing!")
+            time.sleep(3)
+            await perms.grantAllPermissions(holder.player)          
+
 
 
 
@@ -344,7 +368,9 @@ async def prelude():
 
 @bot.event
 async def game_loop():
+
     time.sleep(2)
+
     channel = await perms.getChannelByName("attic", holder.currentServer)  
     emb = (discord.Embed(description="My attic... but something seems off", colour = 0x3DF270))
     emb.set_image(url = "https://cdn.discordapp.com/attachments/518583486672535565/520023726742437888/attic.jpg")
@@ -514,6 +540,9 @@ async def game_loop6():
     time.sleep(5)
     holder.scene = 2
     await perms.grantPermissions(holder.player, "masterbedroom")
+
+
+
     channel = await perms.getChannelByName("masterbedroom", holder.currentServer)
     time.sleep(2)
     emb = (discord.Embed(description="My bedroom, but much nicer than how I left it.", colour = 0x3DF270))
