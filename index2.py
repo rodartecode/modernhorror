@@ -95,7 +95,9 @@ db = get_player_db("db.json")
 
 # Create Bot
 bot = discord.Client()
+print("here")
 manager = GM.GM(bot, config, db)
+print(manager.bot_text)
 perms = servermanager.ServerManager(bot)
 holder = IHoldThings()
 
@@ -133,7 +135,7 @@ async def on_ready():
         emb = (discord.Embed(description="Press the ghost to play!", colour = 0x3DF270))
         channel = None
         for channels in bot.get_all_channels():
-            if channels.id == "521107232868532254":
+            if channels.id == "523047176474198017":
                 channel = channels
                 break
         msg = await bot.send_message(channel, embed=emb)

@@ -131,6 +131,7 @@ async def start_loop(message):
 
 @client.event
 async def story_text(channel):
+    pass
 
 
     

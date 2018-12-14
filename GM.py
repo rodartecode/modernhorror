@@ -47,7 +47,8 @@ class GM:
         self.player_text = GM.Loader.setupPlayer()
         self.player_text1 = GM.Loader.setupPlayer2()
         self.bot_text = GM.Loader.setupBot()
-        self.bot_text = GM.Loader.setupBot2()
+        print(self.bot_text)
+        self.bot_text1 = GM.Loader.setupBot2()
         print('Dialog loaded')
 
         # A dictionary of the current players in the server
